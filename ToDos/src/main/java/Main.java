@@ -3,7 +3,7 @@ public class Main {
         Task myTask = new Task();
         myTask.addContent();
         System.out.println(myTask.getContent());
-        List myList = new List();
-        myList.addTask(myTask);
+        //List myList = new List();
+        //myList.addTask(myTask);
     }
 }

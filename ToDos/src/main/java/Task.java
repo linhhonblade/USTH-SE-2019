@@ -7,7 +7,10 @@ public class Task {
     public Task(){
 
     }
-    //public boolean addContent(String newContent){}
+    public boolean addContent(String newContent){
+        this.content = newContent;
+        return true;
+    }
     public String getContent(){
         return this.content;
     }
