@@ -1,7 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-        Task task = new Task();
-        task.addContent();
-        System.out.println(task.getContent());
+        Task myTask = new Task();
+        myTask.addContent();
+        System.out.println(myTask.getContent());
+        List myList = new List();
+        myList.addTask(myTask);
     }
 }
