@@ -1,4 +1,5 @@
 *.class
-*.xml
-*.iml
+ToDos/*.xml
+ToDos/*.iml
 META-INF
+ToDos/target/*
