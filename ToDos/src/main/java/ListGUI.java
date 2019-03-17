@@ -11,7 +11,7 @@ public class ListGUI extends JFrame implements ActionListener {
         super(title);
 
         //create "add" button.
-        JButton addButton=new JButton(new ImageIcon("C:\\Users\\HP\\Desktop\\add.png"));
+        JButton addButton=new JButton(new ImageIcon("C:\\Users\\HP\\Documents\\ICT\\Software Engineering\\USTH-SE-2019\\ToDos\\src\\main\\java\\add.png"));
         addButton.setActionCommand("Add");
         addButton.addActionListener(this);
         addButton.setBounds(15,10,25,25);
@@ -22,8 +22,8 @@ public class ListGUI extends JFrame implements ActionListener {
         // add function for button
         addButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                textBox=JOptionPane.showInputDialog("enter the new plan: ");
-                JOptionPane.showMessageDialog(null,textBox);
+                textBox=JOptionPane.showInputDialog("Enter the new plan: ");
+//                JOptionPane.showMessageDialog(null,textBox);
                 System.out.print(textBox);
             }
         });
