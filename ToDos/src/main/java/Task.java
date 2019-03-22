@@ -8,6 +8,10 @@ public class Task {
     private String state;
 
     // Task constructor
+
+    public Task(String content){
+        this.content = content;
+    }
     public Task(String newContent, int date, int month, int year) {
         this.content = newContent;
         month = month - 1;
