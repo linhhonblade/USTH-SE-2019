@@ -1,10 +1,9 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.Dimension;
 
 public class ListGUI1 {
 
@@ -33,7 +32,7 @@ public class ListGUI1 {
         myFrame = new JFrame(title);
         northPanel = new JPanel();
         centerPanel = new JPanel();
-        addButton = new JButton(new ImageIcon("D:\\HUONG\\2nd year\\SE\\Todoapp\\src\\main\\java\\add.png"));
+        addButton = new JButton(new ImageIcon("/home/mailovemisa/Desktop/github/linhhonblade/USTH-SE-2019/ToDos/src/main/java/add.png"));
         trashButton = new JButton("trash");
         listTaskPanel = new JPanel();
         myTaskBoxes = new ArrayList<JLabel>();
@@ -80,13 +79,19 @@ public class ListGUI1 {
                 String textBox;
                 textBox = JOptionPane.showInputDialog("Enter the new plan: ");
                 //JOptionPane.showMessageDialog(null,textBox);
-                JLabel TaskLabel = new JLabel(textBox);
-                TaskLabel.setBounds(15, 50, 200, 50);
-                TaskLabel.setVisible(true);
-                myBox.add(TaskLabel);
+                JTextArea taskField = new JTextArea(textBox, 1, 20);
+                taskField.setLineWrap(true);
+                taskField.setWrapStyleWord(true);
+                Border textFieldBorder = BorderFactory.createLineBorder(Color.BLUE, 1);
+                taskField.setBorder(textFieldBorder);
+
+                taskField.setVisible(true);
+                myBox.add(taskField);
                 myList.add(new Task(textBox));
                 System.out.println("You've successfully added new task: " + textBox);
                 myList.showList();
+                myBox.add(Box.createRigidArea(new Dimension(0,5)));
+                //myFrame.pack();
                 myFrame.setVisible(true);
 
                 //pack();
