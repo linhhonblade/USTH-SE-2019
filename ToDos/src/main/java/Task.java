@@ -23,7 +23,7 @@ public class Task extends JPanel{
 
         // Remove me button
         //removeMe = new JButton(new ImageIcon("C:\\Users\\HP\\Documents\\ICT\\Software Engineering\\USTH-SE-2019\\ToDos\\src\\main\\java\\RemoveButton.png"));
-        removeMe = new JButton(new ImageIcon("/home/mailovemisa/Desktop/github/linhhonblade/USTH-SE-2019/ToDos/src/main/java/RemoveButton.png"));
+        removeMe = new JButton(new ImageIcon("/home/doan/Desktop/USTH-SE-2019/ToDos/src/main/java/RemoveButton.png"));
         removeMe.setActionCommand("Remove Me");
         removeMe.setBounds(15, 10, 25, 25);
         removeMe.setBorder(BorderFactory.createEmptyBorder());
@@ -39,7 +39,7 @@ public class Task extends JPanel{
         add(myCheckBox);
 
         // Check Box content store in a JTextArea
-        textArea = new JTextArea(content);
+        textArea = new JTextArea(content,1,15);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setMargin(new Insets(10,10,10,10));
