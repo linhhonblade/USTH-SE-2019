@@ -18,8 +18,8 @@ public class View {
         myFrame = new JFrame("ToDo List");
         northPanel = new JPanel();
         centerPanel = new JPanel();
-        addButton = new JButton("add");
-        trashButton = new JButton("delete");
+        addButton = new JButton(new ImageIcon("C:\\Users\\HP\\Documents\\ICT\\Software Engineering\\USTH-SE-2019\\ToDos\\src\\main\\java\\AddButton.png"));
+        trashButton = new JButton(new ImageIcon("C:\\Users\\HP\\Documents\\ICT\\Software Engineering\\USTH-SE-2019\\ToDos\\src\\main\\java\\RemoveButton.png"));
         myBox = Box.createVerticalBox();
         myBox.setAlignmentX(Component.LEFT_ALIGNMENT);
         //myBox.setAutoscrolls(true);
