@@ -5,6 +5,7 @@ public class Demo {
         myList.add(new Task("dhfwefh"));
         View view = new View(myList);
         Controller controller = new Controller(myList, view);
+        controller.updateView(true);
         controller.setListener();
     }
 }

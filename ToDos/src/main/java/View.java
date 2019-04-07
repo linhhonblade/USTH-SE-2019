@@ -12,6 +12,7 @@ public class View {
     private JButton addButton;
     private JButton trashButton;
     private Box myBox;
+    //private ArrayList<TaskPanel> taskPanels;
 
     public View(ArrayList<Task> myList){
         myFrame = new JFrame("ToDo List");
@@ -20,6 +21,8 @@ public class View {
         addButton = new JButton("add");
         trashButton = new JButton("delete");
         myBox = Box.createVerticalBox();
+        myBox.setAlignmentX(Component.LEFT_ALIGNMENT);
+        //myBox.setAutoscrolls(true);
 
         //frame setting
         myFrame.setSize(300, 400);
@@ -56,45 +59,53 @@ public class View {
         myFrame.add(northPanel, BorderLayout.NORTH);
 
         //show tasks
-        for(Task task : myList){
-            JTextArea taskField = new JTextArea(task.getContent());
-            taskField.setLineWrap(true);
-            taskField.setWrapStyleWord(true);
-            Border taskFieldBorder = BorderFactory.createLineBorder(Color.BLUE,1);
-            taskField.setBorder(taskFieldBorder);
-            myBox.add(taskField);
-            myBox.add(Box.createRigidArea(new Dimension(0,5)));
-            myFrame.setVisible(true);
-        }
+        //taskPanels = new ArrayList<TaskPanel>();
+        // for(Task task : myList){
+        //     TaskPanel taskPanel = new TaskPanel(task.getContent());
+        //     //taskPanel.setLineWrap(true);
+        //     //taskPanel.setWrapStyleWord(true);
+        //     //Border taskPanelBorder = BorderFactory.createLineBorder(Color.BLUE,1);
+        //     //taskPanel.setBorder(taskPanelBorder);
+        //     myBox.add(taskPanel);
+        //     //myBox.add(Box.createRigidArea(new Dimension(0,5)));
+        //     myFrame.setVisible(true);
+        // }
 
     }
 
-    public void updateView(ArrayList<Task> myList){
-        myBox.removeAll();
+    // public void updateView(ArrayList<Task> myList){
+    //     myBox.removeAll();
+    //     myFrame.setVisible(true);
+    //     for(Task task : myList){
+    //         Task taskPanel = new Task(task.getContent());
+    //         //taskPanels.add(taskPanel);
+    //         //taskPanel.setLineWrap(true);
+    //         //taskPanel.setWrapStyleWord(true);
+    //         //Border taskPanelBorder = BorderFactory.createLineBorder(Color.BLUE,1);
+    //         //taskPanel.setBorder(taskPanelBorder);
+    //         myBox.add(taskPanel);
+    //         //myBox.add(Box.createRigidArea(new Dimension(0,5)));
+    //         myFrame.setVisible(true);
+    //     }
+
+    // }
+
+    public void addTask(Task myTask){
+        myTask.setAlignmentX(Component.LEFT_ALIGNMENT);
+        myBox.add(myTask);
         myFrame.setVisible(true);
-        for(Task task : myList){
-            JTextArea taskField = new JTextArea(task.getContent());
-            taskField.setLineWrap(true);
-            taskField.setWrapStyleWord(true);
-            Border taskFieldBorder = BorderFactory.createLineBorder(Color.BLUE,1);
-            taskField.setBorder(taskFieldBorder);
-            myBox.add(taskField);
-            myBox.add(Box.createRigidArea(new Dimension(0,5)));
-            myFrame.setVisible(true);
-        }
-
     }
 
-    public void addNewTask(Task myTask){
-        JTextArea taskField = new JTextArea(myTask.getContent());
-        taskField.setLineWrap(true);
-        taskField.setWrapStyleWord(true);
-        Border taskFieldBorder = BorderFactory.createLineBorder(Color.BLUE,1);
-        taskField.setBorder(taskFieldBorder);
-        myBox.add(taskField);
+    /*public void addNewTask(Task myTask){
+        TaskPanel taskPanel = new TaskPanel(myTask.getContent());
+        taskPanel.setLineWrap(true);
+        taskPanel.setWrapStyleWord(true);
+        Border taskPanelBorder = BorderFactory.createLineBorder(Color.BLUE,1);
+        taskPanel.setBorder(taskPanelBorder);
+        myBox.add(taskPanel);
         myBox.add(Box.createRigidArea(new Dimension(0,5)));
         myFrame.setVisible(true);
-    }
+    }*/
 
     public String getInputFromDialog(){
         return JOptionPane.showInputDialog("Enter your plan: ");
@@ -107,5 +118,11 @@ public class View {
         return trashButton;
     }
 
-
+    public JFrame getMyFrame(){
+        return myFrame;
+    }
+    
+    public Box getBox(){
+        return myBox;
+    }
 }

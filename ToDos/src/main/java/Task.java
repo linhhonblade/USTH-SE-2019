@@ -1,16 +1,49 @@
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
+import java.awt.*;
+import javax.swing.*;
 
-public class Task {
+public class Task extends JPanel{
+    Task me;
+    private JCheckBox myCheckBox;
+    private JButton removeMe;
     private String content;
     private Calendar dueDate;
     private String state;
-
+    private JTextArea textArea;
+    
     // Task constructor
-
     public Task(String content){
+        super();
+        me = this;
         this.content = content;
+        
+        setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
+
+        // Remove me button
+        removeMe = new JButton("remove me");
+        removeMe.setActionCommand("Remove Me");
+
+        // Checkbox
+        myCheckBox = new JCheckBox();
+        myCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
+        myCheckBox.setAlignmentY(Component.CENTER_ALIGNMENT);
+        
+        add(Box.createRigidArea(new Dimension(5, 0)));
+        add(myCheckBox);
+
+        // Check Box content store in a JTextArea
+        textArea = new JTextArea(content);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        textArea.setMargin(new Insets(10,10,10,10));
+        textArea.setOpaque(false);
+        
+        add(textArea);
+        add(Box.createHorizontalGlue());
+        add(removeMe);
+        add(Box.createRigidArea(new Dimension(5, 0)));
     }
     public Task(String newContent, int date, int month, int year) {
         this.content = newContent;
@@ -80,5 +113,10 @@ public class Task {
         return this.state;
     }
 
-}
+    
 
+    public JButton getRemoveMe(){
+        return removeMe;
+    }
+
+}
