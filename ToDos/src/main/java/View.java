@@ -12,14 +12,22 @@ public class View {
     private JButton addButton;
     private JButton trashButton;
     private Box myBox;
+    private JScrollPane scrollPanel;
+    private JPanel southPanel;
+    private JLabel statusLabel;
     //private ArrayList<TaskPanel> taskPanels;
 
     public View(ArrayList<Task> myList){
         myFrame = new JFrame("ToDo List");
         northPanel = new JPanel();
+        southPanel = new JPanel();
         centerPanel = new JPanel();
-        addButton = new JButton(new ImageIcon("C:\\Users\\HP\\Documents\\ICT\\Software Engineering\\USTH-SE-2019\\ToDos\\src\\main\\java\\AddButton.png"));
-        trashButton = new JButton(new ImageIcon("C:\\Users\\HP\\Documents\\ICT\\Software Engineering\\USTH-SE-2019\\ToDos\\src\\main\\java\\TrashButton.png"));
+
+        statusLabel = new JLabel("Hi there!");
+        // addButton = new JButton(new ImageIcon("C:\\Users\\HP\\Documents\\ICT\\Software Engineering\\USTH-SE-2019\\ToDos\\src\\main\\java\\AddButton.png"));
+        // trashButton = new JButton(new ImageIcon("C:\\Users\\HP\\Documents\\ICT\\Software Engineering\\USTH-SE-2019\\ToDos\\src\\main\\java\\TrashButton.png"));
+        addButton = new JButton(new ImageIcon("/home/mailovemisa/Desktop/github/linhhonblade/USTH-SE-2019/ToDos/src/main/java/AddButton.png"));
+        trashButton = new JButton(new ImageIcon("/home/mailovemisa/Desktop/github/linhhonblade/USTH-SE-2019/ToDos/src/main/java/TrashButton.png"));
         myBox = Box.createVerticalBox();
         myBox.setAlignmentX(Component.LEFT_ALIGNMENT);
         //myBox.setAutoscrolls(true);
@@ -39,6 +47,10 @@ public class View {
         northPanel.add(trashButton);
         northPanel.add(Box.createRigidArea(new Dimension(5, 0)));
 
+        southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.PAGE_AXIS));
+        statusLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        southPanel.add(statusLabel);
+
         //addButton setting
         addButton.setActionCommand("Add Task");
         addButton.setBounds(15, 10, 25, 25);
@@ -55,40 +67,16 @@ public class View {
 
         //add components to frame
         centerPanel.add(myBox);
-        myFrame.add(centerPanel);
+        scrollPanel = new JScrollPane(centerPanel);
+        myFrame.add(scrollPanel);
+        myFrame.add(southPanel, BorderLayout.SOUTH);
         myFrame.add(northPanel, BorderLayout.NORTH);
 
-        //show tasks
-        //taskPanels = new ArrayList<TaskPanel>();
-        // for(Task task : myList){
-        //     TaskPanel taskPanel = new TaskPanel(task.getContent());
-        //     //taskPanel.setLineWrap(true);
-        //     //taskPanel.setWrapStyleWord(true);
-        //     //Border taskPanelBorder = BorderFactory.createLineBorder(Color.BLUE,1);
-        //     //taskPanel.setBorder(taskPanelBorder);
-        //     myBox.add(taskPanel);
-        //     //myBox.add(Box.createRigidArea(new Dimension(0,5)));
-        //     myFrame.setVisible(true);
-        // }
+
 
     }
 
-    // public void updateView(ArrayList<Task> myList){
-    //     myBox.removeAll();
-    //     myFrame.setVisible(true);
-    //     for(Task task : myList){
-    //         Task taskPanel = new Task(task.getContent());
-    //         //taskPanels.add(taskPanel);
-    //         //taskPanel.setLineWrap(true);
-    //         //taskPanel.setWrapStyleWord(true);
-    //         //Border taskPanelBorder = BorderFactory.createLineBorder(Color.BLUE,1);
-    //         //taskPanel.setBorder(taskPanelBorder);
-    //         myBox.add(taskPanel);
-    //         //myBox.add(Box.createRigidArea(new Dimension(0,5)));
-    //         myFrame.setVisible(true);
-    //     }
-
-    // }
+  
 
     public void addTask(Task myTask){
         myTask.setAlignmentX(Component.LEFT_ALIGNMENT);

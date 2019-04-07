@@ -45,6 +45,7 @@ public class Controller {
                     myTask.getRemoveMe().addActionListener(new ClickButtonAction());
                     model.add(myTask);
                     model.showList();
+                    me.updateView(true);
                 }
             }
 
