@@ -22,8 +22,12 @@ public class Task extends JPanel{
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 
         // Remove me button
-        removeMe = new JButton("remove me");
+        removeMe = new JButton(new ImageIcon("C:\\Users\\HP\\Documents\\ICT\\Software Engineering\\USTH-SE-2019\\ToDos\\src\\main\\java\\RemoveButton.png"));
         removeMe.setActionCommand("Remove Me");
+        removeMe.setBounds(15, 10, 25, 25);
+        removeMe.setBorder(BorderFactory.createEmptyBorder());
+        removeMe.setContentAreaFilled(false);
+        removeMe.setFocusPainted(false);
 
         // Checkbox
         myCheckBox = new JCheckBox();
