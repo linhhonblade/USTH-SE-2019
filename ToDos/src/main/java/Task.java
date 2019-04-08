@@ -5,16 +5,17 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Task {
-    
+
     private String content;
     private Calendar dueDate;
     private String state;
- 
-    
+
+
     // Task constructor
-    public Task(String content){
+    public Task(String content) {
         this.content = content;
     }
+
     public Task(String newContent, int date, int month, int year) {
         this.content = newContent;
         month = month - 1;
@@ -83,7 +84,5 @@ public class Task {
         return this.state;
     }
 
-    
 
-    
 }

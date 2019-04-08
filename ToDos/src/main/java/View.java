@@ -30,8 +30,8 @@ public class View {
         // trashButton = new JButton(new ImageIcon("C:\\Users\\HP\\Documents\\ICT\\Software Engineering\\USTH-SE-2019\\ToDos\\src\\main\\java\\TrashButton.png"));
         //addButton = new JButton(new ImageIcon("/home/doan/Desktop/USTH-SE-2019/ToDos/src/main/java/AddButton.png"));
         //trashButton = new JButton(new ImageIcon("/home/doan/Desktop/USTH-SE-2019/ToDos/src/main/java/TrashButton.png"));
-        addButton = new JButton(new ImageIcon("/home/mailovemisa/Desktop/github/linhhonblade/USTH-SE-2019/ToDos/src/main/java/AddButton.png"));
-        trashButton = new JButton(new ImageIcon("/home/mailovemisa/Desktop/github/linhhonblade/USTH-SE-2019/ToDos/src/main/java/TrashButton.png"));
+        addButton = new JButton(new ImageIcon("/home/doan/Desktop/USTH-SE-2019/ToDos/src/main/java/AddButton.png"));
+        trashButton = new JButton(new ImageIcon("/home/doan/Desktop/USTH-SE-2019/ToDos/src/main/java/TrashButton.png"));
         myBox = Box.createVerticalBox();
         myBox.setAlignmentX(Component.LEFT_ALIGNMENT);
         //myBox.setAutoscrolls(true);
@@ -57,14 +57,14 @@ public class View {
 
         //addButton setting
         addButton.setActionCommand("Add Task");
-        addButton.setBounds(15, 10, 25, 25);
+        //addButton.setBounds(15, 10, 25, 25);
         addButton.setBorder(BorderFactory.createEmptyBorder());
         addButton.setContentAreaFilled(false);
         addButton.setFocusPainted(false);
 
         //trashButton setting
         trashButton.setActionCommand("Delete All");
-        trashButton.setBounds(15, 10, 25, 25);
+        //trashButton.setBounds(15, 10, 25, 25);
         trashButton.setBorder(BorderFactory.createEmptyBorder());
         trashButton.setContentAreaFilled(false);
         trashButton.setFocusPainted(false);
@@ -73,7 +73,7 @@ public class View {
         centerPanel.add(myBox);
         scrollPanel = new JScrollPane(centerPanel);
         myFrame.add(scrollPanel);
-        
+
         myFrame.add(southPanel, BorderLayout.SOUTH);
         myFrame.add(northPanel, BorderLayout.NORTH);
 
@@ -119,7 +119,20 @@ public class View {
         return myBox;
     }
 
-    public ArrayList<TaskPanel> getTaskPanels(){
+    public ArrayList<TaskPanel> getTaskPanels() {
         return taskPanels;
+    }
+    public void DeleteConfirmDialog(Controller me, List model){
+        int response = JOptionPane.showConfirmDialog(null, "Are you sure to delete all tasks?", "Warning",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (response == JOptionPane.NO_OPTION) {
+            System.out.println("No button clicked");
+        } else if (response == JOptionPane.YES_OPTION) {
+            System.out.println("Yes button clicked");
+            model.clear();
+            me.updateView(true);
+        } else if (response == JOptionPane.CLOSED_OPTION) {
+            System.out.println("JOptionPane closed");
+        }
     }
 }
