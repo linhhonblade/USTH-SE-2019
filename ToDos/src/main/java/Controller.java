@@ -24,9 +24,12 @@ public class Controller {
     public void updateView(boolean isFirstTime){
         if(isFirstTime==true){
             view.getBox().removeAll();
+            view.getTaskPanels().clear();
             for(Task task : model){
-                task.getRemoveMe().addActionListener(new ClickButtonAction());
-                view.addTask(task);
+                TaskPanel newTaskPanel = new TaskPanel(task.getContent());
+        
+                newTaskPanel.getRemoveMe().addActionListener(new ClickButtonAction());
+                view.addTask(newTaskPanel);
             }
             view.getMyFrame().setVisible(true);
             
@@ -42,7 +45,8 @@ public class Controller {
                 String textBox = view.getInputFromDialog();
                 if(textBox.length() != 0){
                     Task myTask = new Task(textBox);
-                    myTask.getRemoveMe().addActionListener(new ClickButtonAction());
+                    TaskPanel myTaskPanel = new TaskPanel(textBox);
+                    myTaskPanel.getRemoveMe().addActionListener(new ClickButtonAction());
                     model.add(myTask);
                     model.showList();
                     me.updateView(true);
@@ -55,7 +59,9 @@ public class Controller {
             }
             else if (command.equals("Remove Me")){
                 JButton source = (JButton)e.getSource();
-                model.remove(source.getParent());
+                int id = view.getTaskPanels().indexOf(source.getParent());
+                view.getTaskPanels().remove(source.getParent());
+                model.remove(id);
                 me.updateView(true);
                 model.showList();
             }

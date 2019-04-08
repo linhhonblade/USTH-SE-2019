@@ -15,9 +15,11 @@ public class View {
     private JScrollPane scrollPanel;
     private JPanel southPanel;
     private JLabel statusLabel;
-    //private ArrayList<TaskPanel> taskPanels;
+    private ArrayList<TaskPanel> taskPanels;
 
     public View(ArrayList<Task> myList) {
+        taskPanels = new ArrayList<TaskPanel>();
+
         myFrame = new JFrame("ToDo List");
         northPanel = new JPanel();
         southPanel = new JPanel();
@@ -26,8 +28,10 @@ public class View {
         statusLabel = new JLabel("Hi there!");
         // addButton = new JButton(new ImageIcon("C:\\Users\\HP\\Documents\\ICT\\Software Engineering\\USTH-SE-2019\\ToDos\\src\\main\\java\\AddButton.png"));
         // trashButton = new JButton(new ImageIcon("C:\\Users\\HP\\Documents\\ICT\\Software Engineering\\USTH-SE-2019\\ToDos\\src\\main\\java\\TrashButton.png"));
-        addButton = new JButton(new ImageIcon("/home/doan/Desktop/USTH-SE-2019/ToDos/src/main/java/AddButton.png"));
-        trashButton = new JButton(new ImageIcon("/home/doan/Desktop/USTH-SE-2019/ToDos/src/main/java/TrashButton.png"));
+        //addButton = new JButton(new ImageIcon("/home/doan/Desktop/USTH-SE-2019/ToDos/src/main/java/AddButton.png"));
+        //trashButton = new JButton(new ImageIcon("/home/doan/Desktop/USTH-SE-2019/ToDos/src/main/java/TrashButton.png"));
+        addButton = new JButton(new ImageIcon("/home/mailovemisa/Desktop/github/linhhonblade/USTH-SE-2019/ToDos/src/main/java/AddButton.png"));
+        trashButton = new JButton(new ImageIcon("/home/mailovemisa/Desktop/github/linhhonblade/USTH-SE-2019/ToDos/src/main/java/TrashButton.png"));
         myBox = Box.createVerticalBox();
         myBox.setAlignmentX(Component.LEFT_ALIGNMENT);
         //myBox.setAutoscrolls(true);
@@ -69,6 +73,7 @@ public class View {
         centerPanel.add(myBox);
         scrollPanel = new JScrollPane(centerPanel);
         myFrame.add(scrollPanel);
+        
         myFrame.add(southPanel, BorderLayout.SOUTH);
         myFrame.add(northPanel, BorderLayout.NORTH);
 
@@ -76,9 +81,10 @@ public class View {
     }
 
 
-    public void addTask(Task myTask) {
-        myTask.setAlignmentX(Component.LEFT_ALIGNMENT);
-        myBox.add(myTask);
+    public void addTask(TaskPanel myTaskPanel) {
+        taskPanels.add(myTaskPanel);
+        myTaskPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        myBox.add(myTaskPanel);
         myFrame.setVisible(true);
     }
 
@@ -111,5 +117,9 @@ public class View {
 
     public Box getBox() {
         return myBox;
+    }
+
+    public ArrayList<TaskPanel> getTaskPanels(){
+        return taskPanels;
     }
 }

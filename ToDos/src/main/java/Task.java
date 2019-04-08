@@ -4,51 +4,16 @@ import java.util.Scanner;
 import java.awt.*;
 import javax.swing.*;
 
-public class Task extends JPanel{
-    Task me;
-    private JCheckBox myCheckBox;
-    private JButton removeMe;
+public class Task {
+    
     private String content;
     private Calendar dueDate;
     private String state;
-    private JTextArea textArea;
+ 
     
     // Task constructor
     public Task(String content){
-        super();
-        me = this;
         this.content = content;
-        
-        setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
-
-        // Remove me button
-        //removeMe = new JButton(new ImageIcon("C:\\Users\\HP\\Documents\\ICT\\Software Engineering\\USTH-SE-2019\\ToDos\\src\\main\\java\\RemoveButton.png"));
-        removeMe = new JButton(new ImageIcon("/home/doan/Desktop/USTH-SE-2019/ToDos/src/main/java/RemoveButton.png"));
-        removeMe.setActionCommand("Remove Me");
-        removeMe.setBounds(15, 10, 25, 25);
-        removeMe.setBorder(BorderFactory.createEmptyBorder());
-        removeMe.setContentAreaFilled(false);
-        removeMe.setFocusPainted(false);
-
-        // Checkbox
-        myCheckBox = new JCheckBox();
-        myCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
-        myCheckBox.setAlignmentY(Component.CENTER_ALIGNMENT);
-        
-        add(Box.createRigidArea(new Dimension(5, 0)));
-        add(myCheckBox);
-
-        // Check Box content store in a JTextArea
-        textArea = new JTextArea(content,1,15);
-        textArea.setLineWrap(true);
-        textArea.setWrapStyleWord(true);
-        textArea.setMargin(new Insets(10,10,10,10));
-        textArea.setOpaque(false);
-        
-        add(textArea);
-        add(Box.createHorizontalGlue());
-        add(removeMe);
-        add(Box.createRigidArea(new Dimension(5, 0)));
     }
     public Task(String newContent, int date, int month, int year) {
         this.content = newContent;
@@ -120,8 +85,5 @@ public class Task extends JPanel{
 
     
 
-    public JButton getRemoveMe(){
-        return removeMe;
-    }
-
+    
 }
