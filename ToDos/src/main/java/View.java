@@ -72,6 +72,7 @@ public class View {
         //add components to frame
         centerPanel.add(myBox);
         scrollPanel = new JScrollPane(centerPanel);
+        scrollPanel.setBorder(null);
         myFrame.add(scrollPanel);
 
         myFrame.add(southPanel, BorderLayout.SOUTH);
