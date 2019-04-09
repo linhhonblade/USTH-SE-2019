@@ -16,11 +16,13 @@ public class View {
     private JPanel southPanel;
     private JLabel statusLabel;
     private ArrayList<TaskPanel> taskPanels;
+    private JLabel ToDoLabel;
 
     public View(ArrayList<Task> myList) {
         taskPanels = new ArrayList<TaskPanel>();
 
         myFrame = new JFrame("ToDo List");
+        ToDoLabel = new JLabel("Todo List");
         northPanel = new JPanel();
         southPanel = new JPanel();
         centerPanel = new JPanel();
@@ -45,15 +47,20 @@ public class View {
 
         //panel setting
         northPanel.setLayout(new BoxLayout(northPanel, BoxLayout.LINE_AXIS));
-        northPanel.add(Box.createRigidArea(new Dimension(5, 0)));
+        northPanel.add(Box.createRigidArea(new Dimension(10, 0)));
         northPanel.add(addButton);
         northPanel.add(Box.createHorizontalGlue());
+        northPanel.add(ToDoLabel);
+        northPanel.add(Box.createHorizontalGlue());
         northPanel.add(trashButton);
-        northPanel.add(Box.createRigidArea(new Dimension(5, 0)));
+        northPanel.add(Box.createRigidArea(new Dimension(10, 50)));
 
         southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.PAGE_AXIS));
         statusLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         southPanel.add(statusLabel);
+
+        // TodoLabel setting
+        ToDoLabel.setFont(new Font("Cooper Black", Font.BOLD, 30));
 
         //addButton setting
         addButton.setActionCommand("Add Task");
