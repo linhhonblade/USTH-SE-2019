@@ -1,3 +1,5 @@
+package com.todo.model;
+
 import java.util.ArrayList;
 
 public class List extends ArrayList<Task> {

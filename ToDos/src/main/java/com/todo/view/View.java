@@ -1,8 +1,11 @@
+package com.todo.view;
+
+import com.todo.controller.Controller;
+import com.todo.model.List;
+import com.todo.model.Task;
+
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.*;
 
 public class View extends JFrame {

@@ -1,11 +1,16 @@
+package com.todo.controller;
+
+import com.todo.model.List;
+import com.todo.model.Task;
+import com.todo.view.TaskPanel;
+import com.todo.view.View;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
-import static javax.swing.JOptionPane.*;
 
 public class Controller {
     protected Controller me;

@@ -1,3 +1,5 @@
+package com.todo.model;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;

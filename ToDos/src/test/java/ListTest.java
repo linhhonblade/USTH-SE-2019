@@ -1,8 +1,8 @@
-import org.junit.After;
+import com.todo.model.List;
+import com.todo.model.Task;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
