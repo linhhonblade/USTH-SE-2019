@@ -13,7 +13,7 @@ public class TaskPanel extends JPanel {
 
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 
-        removeMe = new JButton(new ImageIcon("/home/doan/Desktop/USTH-SE-2019/ToDos/src/main/java/RemoveButton.png"));
+        removeMe = new JButton(new ImageIcon("src/main/icons/RemoveButton.png"));
         removeMe.setActionCommand("Remove Me");
         //removeMe.setBounds(15, 10, 25, 25);
         removeMe.setBorder(BorderFactory.createEmptyBorder());

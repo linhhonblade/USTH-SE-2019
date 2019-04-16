@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 
-public class View {
+public class View extends JFrame {
     private JFrame myFrame;
     private JPanel northPanel;
     private JPanel centerPanel;
@@ -20,30 +20,26 @@ public class View {
 
     public View(ArrayList<Task> myList) {
         taskPanels = new ArrayList<TaskPanel>();
-
-        myFrame = new JFrame("ToDo List");
+        this.setTitle("Todo List");
+        myFrame = this;
         ToDoLabel = new JLabel("Todo List");
         northPanel = new JPanel();
         southPanel = new JPanel();
         centerPanel = new JPanel();
 
         statusLabel = new JLabel("Hi there!");
-        // addButton = new JButton(new ImageIcon("C:\\Users\\HP\\Documents\\ICT\\Software Engineering\\USTH-SE-2019\\ToDos\\src\\main\\java\\AddButton.png"));
-        // trashButton = new JButton(new ImageIcon("C:\\Users\\HP\\Documents\\ICT\\Software Engineering\\USTH-SE-2019\\ToDos\\src\\main\\java\\TrashButton.png"));
-        //addButton = new JButton(new ImageIcon("/home/doan/Desktop/USTH-SE-2019/ToDos/src/main/java/AddButton.png"));
-        //trashButton = new JButton(new ImageIcon("/home/doan/Desktop/USTH-SE-2019/ToDos/src/main/java/TrashButton.png"));
-        addButton = new JButton(new ImageIcon("/home/doan/Desktop/USTH-SE-2019/ToDos/src/main/java/AddButton.png"));
-        trashButton = new JButton(new ImageIcon("/home/doan/Desktop/USTH-SE-2019/ToDos/src/main/java/TrashButton.png"));
+        trashButton = new JButton(new ImageIcon("src/main/icons/TrashButton.png"));
+        addButton = new JButton(new ImageIcon("src/main/icons/AddButton.png"));
         myBox = Box.createVerticalBox();
         myBox.setAlignmentX(Component.LEFT_ALIGNMENT);
         //myBox.setAutoscrolls(true);
 
         //frame setting
-        myFrame.setSize(300, 400);
-        myFrame.setLayout(new BorderLayout());
-        myFrame.setVisible(true);
-        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        myFrame.setLocationRelativeTo(null);
+        this.setSize(300, 400);
+        this.setLayout(new BorderLayout());
+        this.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
 
         //panel setting
         northPanel.setLayout(new BoxLayout(northPanel, BoxLayout.LINE_AXIS));
@@ -80,10 +76,10 @@ public class View {
         centerPanel.add(myBox);
         scrollPanel = new JScrollPane(centerPanel);
         scrollPanel.setBorder(null);
-        myFrame.add(scrollPanel);
+        this.add(scrollPanel);
 
-        myFrame.add(southPanel, BorderLayout.SOUTH);
-        myFrame.add(northPanel, BorderLayout.NORTH);
+        this.add(southPanel, BorderLayout.SOUTH);
+        this.add(northPanel, BorderLayout.NORTH);
 
 
     }
@@ -93,7 +89,7 @@ public class View {
         taskPanels.add(myTaskPanel);
         myTaskPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         myBox.add(myTaskPanel);
-        myFrame.setVisible(true);
+        this.setVisible(true);
     }
 
     /*public void addNewTask(Task myTask){
@@ -104,7 +100,7 @@ public class View {
         taskPanel.setBorder(taskPanelBorder);
         myBox.add(taskPanel);
         myBox.add(Box.createRigidArea(new Dimension(0,5)));
-        myFrame.setVisible(true);
+        this.setVisible(true);
     }*/
 
     public String getInputFromDialog() {
@@ -127,9 +123,12 @@ public class View {
         return myBox;
     }
 
+    public JFrame getFrame(){ return myFrame; }
+
     public ArrayList<TaskPanel> getTaskPanels() {
         return taskPanels;
     }
+
     public void DeleteConfirmDialog(Controller me, List model){
         int response = JOptionPane.showConfirmDialog(null, "Are you sure to delete all tasks?", "Warning",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);

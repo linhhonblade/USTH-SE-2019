@@ -1,9 +1,9 @@
 import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
+import java.sql.SQLException;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import static javax.swing.JOptionPane.*;
 
@@ -11,16 +11,31 @@ public class Controller {
     protected Controller me;
     protected View view;
     protected List model;
+    protected DataConnector data;
 
     public Controller(List model, View view) {
         me = this;
         this.model = model;
         this.view = view;
+        this.data = new DataConnector();
     }
 
-    public void setListener() {
+    public View setListener() {
         view.getAddButton().addActionListener(new ClickButtonAction());
         view.getTrasshButton().addActionListener(new ClickButtonAction());
+        view.getFrame().addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                try {
+                    data.writeData(model);
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                } catch (ClassNotFoundException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+        return view;
 
     }
 
