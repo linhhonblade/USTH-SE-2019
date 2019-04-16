@@ -3,3 +3,4 @@ ToDos/*.xml
 ToDos/*.iml
 META-INF
 ToDos/target/*
+ToDos/.idea/*
