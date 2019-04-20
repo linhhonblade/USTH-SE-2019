@@ -35,7 +35,6 @@ public class View extends JFrame {
         addButton = new JButton(new ImageIcon("src/main/icons/AddButton.png"));
         myBox = Box.createVerticalBox();
         myBox.setAlignmentX(Component.LEFT_ALIGNMENT);
-        //myBox.setAutoscrolls(true);
 
         //frame setting
         this.setSize(300, 400);
@@ -63,14 +62,12 @@ public class View extends JFrame {
 
         //addButton setting
         addButton.setActionCommand("Add Task");
-        //addButton.setBounds(15, 10, 25, 25);
         addButton.setBorder(BorderFactory.createEmptyBorder());
         addButton.setContentAreaFilled(false);
         addButton.setFocusPainted(false);
 
         //trashButton setting
         trashButton.setActionCommand("Delete All");
-        //trashButton.setBounds(15, 10, 25, 25);
         trashButton.setBorder(BorderFactory.createEmptyBorder());
         trashButton.setContentAreaFilled(false);
         trashButton.setFocusPainted(false);
@@ -80,13 +77,9 @@ public class View extends JFrame {
         scrollPanel = new JScrollPane(centerPanel);
         scrollPanel.setBorder(null);
         this.add(scrollPanel);
-
         this.add(southPanel, BorderLayout.SOUTH);
         this.add(northPanel, BorderLayout.NORTH);
-
-
     }
-
 
     public void addTask(TaskPanel myTaskPanel) {
         taskPanels.add(myTaskPanel);
@@ -94,17 +87,6 @@ public class View extends JFrame {
         myBox.add(myTaskPanel);
         this.setVisible(true);
     }
-
-    /*public void addNewTask(Task myTask){
-        TaskPanel taskPanel = new TaskPanel(myTask.getContent());
-        taskPanel.setLineWrap(true);
-        taskPanel.setWrapStyleWord(true);
-        Border taskPanelBorder = BorderFactory.createLineBorder(Color.BLUE,1);
-        taskPanel.setBorder(taskPanelBorder);
-        myBox.add(taskPanel);
-        myBox.add(Box.createRigidArea(new Dimension(0,5)));
-        this.setVisible(true);
-    }*/
 
     public String getInputFromDialog() {
         return JOptionPane.showInputDialog("Enter your plan: ");
@@ -114,7 +96,7 @@ public class View extends JFrame {
         return addButton;
     }
 
-    public JButton getTrasshButton() {
+    public JButton getTrashButton() {
         return trashButton;
     }
 
@@ -126,13 +108,15 @@ public class View extends JFrame {
         return myBox;
     }
 
-    public JFrame getFrame(){ return myFrame; }
+    public JFrame getFrame() {
+        return myFrame;
+    }
 
     public ArrayList<TaskPanel> getTaskPanels() {
         return taskPanels;
     }
 
-    public void DeleteConfirmDialog(Controller me, List model){
+    public void DeleteConfirmDialog(Controller me, List model) {
         int response = JOptionPane.showConfirmDialog(null, "Are you sure to delete all tasks?", "Warning",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.NO_OPTION) {

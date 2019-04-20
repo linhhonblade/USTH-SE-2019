@@ -27,7 +27,7 @@ public class Controller {
 
     public View setListener() {
         view.getAddButton().addActionListener(new ClickButtonAction());
-        view.getTrasshButton().addActionListener(new ClickButtonAction());
+        view.getTrashButton().addActionListener(new ClickButtonAction());
         view.getFrame().addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -41,7 +41,6 @@ public class Controller {
             }
         });
         return view;
-
     }
 
     public void updateView(boolean isFirstTime) {
@@ -55,12 +54,10 @@ public class Controller {
                 view.addTask(newTaskPanel);
             }
             view.getMyFrame().setVisible(true);
-
         } else {
             view.getMyFrame().setVisible(true);
         }
     }
-
 
     private class ClickButtonAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -76,20 +73,7 @@ public class Controller {
                     me.updateView(true);
                 }
             } else if (command.equals("Delete All")) {
-                view.DeleteConfirmDialog(me,model);
-                //JDialog.setDefaultLookAndFeelDecorated(true);
-                /*int response = JOptionPane.showConfirmDialog(null, "Are you sure to delete all tasks?", "Warning",
-                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if (response == JOptionPane.NO_OPTION) {
-                    System.out.println("No button clicked");
-                } else if (response == JOptionPane.YES_OPTION) {
-                    System.out.println("Yes button clicked");
-                    model.clear();
-                    me.updateView(true);
-                } else if (response == JOptionPane.CLOSED_OPTION) {
-                    System.out.println("JOptionPane closed");
-                }*/
-
+                view.DeleteConfirmDialog(me, model);
             } else if (command.equals("Remove Me")) {
                 JButton source = (JButton) e.getSource();
                 int id = view.getTaskPanels().indexOf(source.getParent());

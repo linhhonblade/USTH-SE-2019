@@ -21,12 +21,12 @@ public class createTable {
 
             //STEP 2: Open a connection
             System.out.println("Connecting to database...");
-            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             //STEP 3: Execute a query
             System.out.println("Creating table in given database...");
             stmt = conn.createStatement();
-            String sql =  "CREATE TABLE   Todolist " +
+            String sql = "CREATE TABLE   TodoList " +
                     "(content TEXT)";
             stmt.executeUpdate(sql);
             System.out.println("Created table in given database...");
@@ -34,21 +34,21 @@ public class createTable {
             // STEP 4: Clean-up environment
             stmt.close();
             conn.close();
-        } catch(SQLException se) {
+        } catch (SQLException se) {
             //Handle errors for JDBC
             se.printStackTrace();
-        } catch(Exception e) {
+        } catch (Exception e) {
             //Handle errors for Class.forName
             e.printStackTrace();
         } finally {
             //finally block used to close resources
-            try{
-                if(stmt!=null) stmt.close();
-            } catch(SQLException se2) {
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException se2) {
             } // nothing we can do
             try {
-                if(conn!=null) conn.close();
-            } catch(SQLException se){
+                if (conn != null) conn.close();
+            } catch (SQLException se) {
                 se.printStackTrace();
             } //end finally try
         } //end try

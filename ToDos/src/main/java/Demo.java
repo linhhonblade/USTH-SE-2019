@@ -14,8 +14,5 @@ public class Demo {
         Controller controller = new Controller(myList, view);
         controller.updateView(true);
         view = controller.setListener();
-    
-
-
     }
 }

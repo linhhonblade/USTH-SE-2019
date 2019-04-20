@@ -12,8 +12,9 @@ import static org.assertj.swing.finder.WindowFinder.findFrame;
 
 public class IntegrationTest {
     private FrameFixture window;
+
     @Before
-    public void setUp(){
+    public void setUp() {
         DataConnector data = new DataConnector();
         final List myList = data.readData();
         View frame = GuiActionRunnable.execute(() -> new View(myList));

@@ -6,11 +6,10 @@ import com.todo.model.Task;
 import java.sql.*;
 
 
-public class DataConnector{
+public class DataConnector {
     // JDBC driver name and database URL
     static final String JDBC_DRIVER = "org.h2.Driver";
     static final String DB_URL = "jdbc:h2:~/test";
-
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
     private Connection connect = null;
@@ -24,34 +23,29 @@ public class DataConnector{
         List list = new List();
         Class.forName(JDBC_DRIVER);
         System.out.println("Connecting to database...");
-        connect = DriverManager.getConnection(DB_URL,USER,PASS);
+        connect = DriverManager.getConnection(DB_URL, USER, PASS);
         System.out.println("Connected database successfully...");
-
         statement = connect.createStatement();
-        String sql = "SELECT * FROM Todolist";
+        String sql = "SELECT * FROM TodoList";
         resultSet = statement.executeQuery(sql);
-
-        while(resultSet.next()){
+        while (resultSet.next()) {
             Task task = new Task(resultSet.getString("content"));
             list.add(task);
         }
-
         resultSet.close();
         return list;
     }
 
-    public void writeData(List list) throws SQLException, ClassNotFoundException{
+    public void writeData(List list) throws SQLException, ClassNotFoundException {
         Class.forName(JDBC_DRIVER);
         System.out.println("Connecting to database...");
-        connect = DriverManager.getConnection(DB_URL,USER,PASS);
+        connect = DriverManager.getConnection(DB_URL, USER, PASS);
         System.out.println("Connected database successfully...");
-
-        String sql = "DELETE FROM Todolist";
+        String sql = "DELETE FROM TodoList";
         preparedStatement = connect.prepareStatement(sql);
         preparedStatement.executeUpdate();
-
-        for(Task task: list){
-            sql = "INSERT INTO Todolist " +  "VALUES(\'" + task.getContent() + "\')";
+        for (Task task : list) {
+            sql = "INSERT INTO TodoList " + "VALUES(\'" + task.getContent() + "\')";
             System.out.println(sql);
             preparedStatement = connect.prepareStatement(sql);
             preparedStatement.executeUpdate();
