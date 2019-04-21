@@ -49,8 +49,13 @@ public class Controller {
             view.getTaskPanels().clear();
             for (Task task : model) {
                 TaskPanel newTaskPanel = new TaskPanel(task.getContent());
-
                 newTaskPanel.getRemoveMe().addActionListener(new ClickButtonAction());
+                if (task.getState().equals("done")) {
+                    newTaskPanel.getMyCheckBox().setSelected(true);
+                } else {
+                    newTaskPanel.getMyCheckBox().setSelected(false);
+                }
+                newTaskPanel.getMyCheckBox().addActionListener(new CheckBoxAction());
                 view.addTask(newTaskPanel);
             }
             view.getMyFrame().setVisible(true);
@@ -66,8 +71,10 @@ public class Controller {
                 String textBox = view.getInputFromDialog();
                 if (textBox.length() != 0) {
                     Task myTask = new Task(textBox);
+                    myTask.setState("not done");
                     TaskPanel myTaskPanel = new TaskPanel(textBox);
                     myTaskPanel.getRemoveMe().addActionListener(new ClickButtonAction());
+                    myTaskPanel.getMyCheckBox().addActionListener(new CheckBoxAction());
                     model.add(myTask);
                     model.showList();
                     me.updateView(true);
@@ -82,6 +89,18 @@ public class Controller {
                 me.updateView(true);
                 model.showList();
             }
+        }
+    }
+
+    public class CheckBoxAction implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            JCheckBox cb = (JCheckBox) e.getSource();
+            boolean selected = cb.getModel().isSelected();
+            int id = view.getTaskPanels().indexOf(cb.getParent());
+            if (selected)
+                model.get(id).setState("done");
+            else model.get(id).setState("not done");
+            model.showList();
         }
     }
 }

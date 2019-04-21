@@ -13,6 +13,6 @@ public class Demo {
         View view = new View(myList);
         Controller controller = new Controller(myList, view);
         controller.updateView(true);
-        view = controller.setListener();
+        controller.setListener();
     }
 }

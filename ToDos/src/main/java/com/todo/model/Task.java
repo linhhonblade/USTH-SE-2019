@@ -11,6 +11,11 @@ public class Task {
         this.content = content;
     }
 
+    public Task(String content, String state) {
+        this.content = content;
+        this.state = state;
+    }
+
     //add new content
     public void addContent(String newContent) {
         this.content = newContent;

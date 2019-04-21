@@ -43,4 +43,8 @@ public class TaskPanel extends JPanel {
     public JButton getRemoveMe() {
         return removeMe;
     }
+
+    public JCheckBox getMyCheckBox(){
+        return myCheckBox;
+    }
 }

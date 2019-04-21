@@ -29,7 +29,7 @@ public class DataConnector {
         String sql = "SELECT * FROM TodoList";
         resultSet = statement.executeQuery(sql);
         while (resultSet.next()) {
-            Task task = new Task(resultSet.getString("content"));
+            Task task = new Task(resultSet.getString("content"), resultSet.getString("state"));
             list.add(task);
         }
         resultSet.close();
@@ -45,7 +45,7 @@ public class DataConnector {
         preparedStatement = connect.prepareStatement(sql);
         preparedStatement.executeUpdate();
         for (Task task : list) {
-            sql = "INSERT INTO TodoList " + "VALUES(\'" + task.getContent() + "\')";
+            sql = "INSERT INTO TodoList (content, state) " + "VALUES(\'" + task.getContent() + "\', \'" + task.getState() + "\')";
             System.out.println(sql);
             preparedStatement = connect.prepareStatement(sql);
             preparedStatement.executeUpdate();

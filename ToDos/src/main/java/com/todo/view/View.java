@@ -38,6 +38,7 @@ public class View extends JFrame {
 
         //frame setting
         this.setSize(300, 400);
+        this.setResizable(false);
         this.setLayout(new BorderLayout());
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

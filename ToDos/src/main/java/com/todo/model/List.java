@@ -6,7 +6,7 @@ public class List extends ArrayList<Task> {
     public void showList() {
         System.out.println("List Info:");
         for (int i = 0; i < this.size(); i++) {
-            this.get(i).printContent();
+            System.out.println(this.get(i).getContent() + "/" + this.get(i).getState());
         }
     }
 }

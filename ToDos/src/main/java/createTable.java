@@ -26,8 +26,9 @@ public class createTable {
             //STEP 3: Execute a query
             System.out.println("Creating table in given database...");
             stmt = conn.createStatement();
-            String sql = "CREATE TABLE   TodoList " +
-                    "(content TEXT)";
+            String sql = "CREATE TABLE TodoList " +
+                    "(content TEXT, " +
+                    " state TEXT)";
             stmt.executeUpdate(sql);
             System.out.println("Created table in given database...");
 
