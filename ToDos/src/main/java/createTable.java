@@ -6,7 +6,7 @@ import java.sql.Statement;
 public class createTable {
     // JDBC driver name and database URL
     static final String JDBC_DRIVER = "org.h2.Driver";
-    static final String DB_URL = "jdbc:h2:~/test";
+    static final String DB_URL = "jdbc:h2:./data/test";
 
     //  Database credentials
     static final String USER = "sa";

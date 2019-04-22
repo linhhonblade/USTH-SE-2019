@@ -15,7 +15,7 @@ public class TaskPanel extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 
         // removeMe button setting
-        removeMe = new JButton(new ImageIcon("src/main/icons/RemoveButton.png"));
+        removeMe = new JButton(new ImageIcon("icons/RemoveButton.png"));
         removeMe.setActionCommand("Remove Me");
         removeMe.setBorder(BorderFactory.createEmptyBorder());
         removeMe.setContentAreaFilled(false);

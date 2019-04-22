@@ -31,8 +31,8 @@ public class View extends JFrame {
         centerPanel = new JPanel();
 
         statusLabel = new JLabel("Hi there!");
-        trashButton = new JButton(new ImageIcon("src/main/icons/TrashButton.png"));
-        addButton = new JButton(new ImageIcon("src/main/icons/AddButton.png"));
+        trashButton = new JButton(new ImageIcon("icons/TrashButton.png"));
+        addButton = new JButton(new ImageIcon("icons/AddButton.png"));
         myBox = Box.createVerticalBox();
         myBox.setAlignmentX(Component.LEFT_ALIGNMENT);
 

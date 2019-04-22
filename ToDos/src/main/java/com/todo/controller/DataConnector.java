@@ -3,27 +3,38 @@ package com.todo.controller;
 import com.todo.model.List;
 import com.todo.model.Task;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public class DataConnector {
     // JDBC driver name and database URL
-    static final String JDBC_DRIVER = "org.h2.Driver";
-    static final String DB_URL = "jdbc:h2:~/test";
-    private PreparedStatement preparedStatement = null;
-    private ResultSet resultSet = null;
-    private Connection connect = null;
-    private Statement statement = null;
+    private String jdbcDriver;
+    private String url;
+    private PreparedStatement preparedStatement;
+    private ResultSet resultSet;
+    private Connection connect;
+    private Statement statement;
 
     //  Database credentials
-    static final String USER = "sa";
-    static final String PASS = "";
+    private String user;
+    private String pass;
 
+    public DataConnector(){
+        this.jdbcDriver = "org.h2.Driver";
+        this.url = "jdbc:h2:./data/test";
+        this.user = "sa";
+        this.pass = "";
+    }
     public List readData() throws SQLException, ClassNotFoundException {
         List list = new List();
-        Class.forName(JDBC_DRIVER);
+        Class.forName(jdbcDriver);
         System.out.println("Connecting to database...");
-        connect = DriverManager.getConnection(DB_URL, USER, PASS);
+        connect = DriverManager.getConnection(url,user, pass);
         System.out.println("Connected database successfully...");
         statement = connect.createStatement();
         String sql = "SELECT * FROM TodoList";
@@ -37,9 +48,9 @@ public class DataConnector {
     }
 
     public void writeData(List list) throws SQLException, ClassNotFoundException {
-        Class.forName(JDBC_DRIVER);
+        Class.forName(jdbcDriver);
         System.out.println("Connecting to database...");
-        connect = DriverManager.getConnection(DB_URL, USER, PASS);
+        connect = DriverManager.getConnection(url, user, pass);
         System.out.println("Connected database successfully...");
         String sql = "DELETE FROM TodoList";
         preparedStatement = connect.prepareStatement(sql);
