@@ -2,7 +2,7 @@
 
 **Project:** *To-do List Application*  
 **Attendees:** *Pham Thi Ngoc Mai, Vu Khanh Huyen, Doan Lien Huong, Nguyen Huu Chi Dat*  
-**Date:** *Tueday, March 19th, 2019*  
+**Date:** *Tuesday, March 19th, 2019*  
 **Time:** *2:00 p.m*  
 **Duration:** *1 hour*  
 
