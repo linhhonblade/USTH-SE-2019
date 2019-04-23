@@ -14,6 +14,10 @@
 	* Vu Khanh Huyen: Scrum team's member
 	* Doan Lien Huong: Scrum team's member
 	* Nguyen Huu Chi Dat: Scrum Master, Scrum team's member
-
+* Installation:
+	* Download this [zip file](https://github.com/linhhonblade/USTH-SE-2019/blob/ProjectSE/ToDos/out/artifacts/TodoList.zip)
+	* Unzip and go to TodoList_jar
+	* Run this command: java -jar TodoList.jar (Recommend: install JDK)
+	
 
 
